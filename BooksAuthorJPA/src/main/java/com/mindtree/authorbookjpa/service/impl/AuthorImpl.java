@@ -1,5 +1,8 @@
 package com.mindtree.authorbookjpa.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -38,6 +41,16 @@ public class AuthorImpl implements AuthorService {
 			throw new AuthorServiceException(e.getMessage());
 		}
 		return author;
+	}
+
+	@Override
+	public List<AuthorDto> fetchDetailsByPrice(String bookName) {
+		 List<Author> authors = authorRep.findByBookName(bookName);
+		 List<AuthorDto> authorDtos = new ArrayList<AuthorDto>();
+		 for(Author a: authors) {
+			 authorDtos.add(mapper.map(a, AuthorDto.class));
+		 }
+		return authorDtos;
 	}
 
 }
