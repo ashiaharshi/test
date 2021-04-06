@@ -1,4 +1,3 @@
 Hello Mindtree!!!
-Orchard is Good learning Program...
+Orchard is Good learning Program.
 ABC
-Java
